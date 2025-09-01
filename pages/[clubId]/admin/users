@@ -1,0 +1,53 @@
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+
+export default async function UsersPage({ params }) {
+  const supabase = createServerComponentClient({ cookies });
+  const clubId = params.clubId;
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session?.user) {
+    return redirect('/login');
+  }
+
+  const {
+    data: clubUser,
+  } = await supabase
+    .from('club_users')
+    .select('id, role, club_id')
+    .eq('user_id', session.user.id)
+    .eq('club_id', clubId)
+    .single();
+
+  if (!clubUser || clubUser.role !== 'admin') {
+    return redirect('/not-authorized');
+  }
+
+  const { data: users, error } = await supabase
+    .from('club_users')
+    .select('id, user_id, role, profiles(email)')
+    .eq('club_id', clubId);
+
+  if (error) {
+    return <div>Error loading users: {error.message}</div>;
+  }
+
+  return (
+    <main className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Club Users</h1>
+      <ul>
+        {users.map((u) => (
+          <li key={u.id} className="mb-2 border p-2 rounded">
+            <div className="font-semibold">User ID: {u.user_id}</div>
+            <div className="text-sm">Role: {u.role}</div>
+            <div className="text-sm text-gray-500">Email: {u.profiles?.email ?? 'N/A'}</div>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}

@@ -1,0 +1,43 @@
+/* Reset + Global Styles */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  /* Layout wrapper */
+  .app-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Top bar */
+  .top-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  /* Home button */
+  .home-button {
+    background-color: #e6e6e6;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: inline-block;
+  }
+  
+  .home-button:hover {
+    background-color: #d4d4d4;
+  }
+  

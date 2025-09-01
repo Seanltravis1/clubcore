@@ -1,0 +1,72 @@
+/* styles/ads.css */
+
+.ads-container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .ads-container h1,
+  .ads-container h2 {
+    color: #333;
+  }
+  
+  .ads-form input[type="text"],
+  .ads-form input[type="number"] {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+  }
+  
+  .ads-form input[type="file"] {
+    margin-top: 0.5rem;
+  }
+  
+  .ads-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ads-form button:hover {
+    background-color: #45a049;
+  }
+  
+  .ads-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .ads-table th, .ads-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .ads-table th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  
+  .ads-table td button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ads-table td button:hover {
+    background-color: darkred;
+  }
+  
+  .ads-image-preview {
+    width: 60px;
+    height: auto;
+    border-radius: 4px;
+  }
